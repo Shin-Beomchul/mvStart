@@ -1,14 +1,10 @@
 package house.beom.com.mvvm.mvvm.livedata.views;
 
 import android.arch.lifecycle.ViewModelProviders;
-import android.databinding.BindingAdapter;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
-import android.util.Log;
-import android.view.Gravity;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import house.beom.com.mvvm.R;
@@ -92,20 +88,10 @@ public class ListActMV extends AppCompatActivity {
                 }
 
 
-            Toast.makeText(getApplicationContext(),"[Controller] :: getUsers 데이터 변경",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"[Controller] :: Users 데이터 변경감지",Toast.LENGTH_SHORT).show();
         });
 
-        listViewModel.getFirstuserName().observe(this,listOfFirstUserName -> {
-            Toast ts = Toast.makeText(getApplicationContext(),"[Controller] :: 첫번째 유저 변경 : " + listOfFirstUserName,Toast.LENGTH_LONG);
-            ts.setGravity(Gravity.TOP,ts.getXOffset(),ts.getYOffset());
-            ts.show();
-        });
+
     }
 
-
-
-    @BindingAdapter("app:FirstNameHook")
-    public static void setHooker(TextView tv, String firstname){
-        Log.d("MvListAct", "View First hook");
-    }
 }

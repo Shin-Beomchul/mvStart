@@ -34,14 +34,6 @@
         android:layout_height="wrap_content"
         app:visibility="@{ListViewModel.progressBarState}"/>
 
-    <TextView
-        android:id="@+id/tv_firstName"
-        android:gravity="center"
-        android:text="@{ListViewModel.firstuserName}"
-        android:layout_gravity="bottom"
-        android:layout_width="match_parent"
-        app:FirstNameHook="@{ListViewModel.firstuserName}"
-        android:layout_height="wrap_content" />
 
     <Button
         android:layout_width="match_parent"
