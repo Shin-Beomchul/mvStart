@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout>
+
+    <data>
+        <variable
+                name="ListViewModel"
+                type="house.beom.com.mvvm.mvvm.livedata.vm.ListVM"/>
+    </data>
+
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mvvm.livedata.views.ListActMV"
+    android:orientation="vertical"
+    android:gravity="bottom">
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerview"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    </android.support.v7.widget.RecyclerView>
+
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:visibility="@{ListViewModel.progressBarState}"/>
+
+    <TextView
+        android:id="@+id/tv_firstName"
+        android:gravity="center"
+        android:text="@{ListViewModel.firstuserName}"
+        android:layout_gravity="bottom"
+        android:layout_width="match_parent"
+        app:FirstNameHook="@{ListViewModel.firstuserName}"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="getUsers"
+        android:onClick="@{ListViewModel::reqUsers}"/>
+
+
+
+</LinearLayout>
+
+</layout>
