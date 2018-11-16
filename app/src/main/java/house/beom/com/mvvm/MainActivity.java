@@ -8,9 +8,10 @@ import android.view.View;
 import android.widget.Toast;
 
 import house.beom.com.mvvm.databinding.ActivityMainBinding;
+import house.beom.com.mvvm.mvvm.basic.views.ListActBasic;
 import house.beom.com.mvvm.mvvm.livedata.views.ListActMV;
-import house.beom.com.mvvm.network.UserResponse;
-import house.beom.com.mvvm.util.Constant;
+import house.beom.com.mvvm.util.network.UserResponse;
+import house.beom.com.mvvm.util.network.Constant;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;
@@ -29,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void onClickMVVMBasic(View view){
+        startActivity(new Intent(this, ListActBasic.class));
         Toast.makeText(getApplicationContext()
                 , "Only DataBinding"
                 , Toast.LENGTH_SHORT).show();

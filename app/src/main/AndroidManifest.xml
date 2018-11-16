@@ -20,7 +20,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".mvvm.livedata.views.ListActMV" />
-        <activity android:name=".mvvm.livedata.views.DetailActMV"></activity>
+        <activity android:name=".mvvm.livedata.views.DetailActMV" />
+        <activity android:name=".mvvm.basic.views.ListActBasic"></activity>
     </application>
 
 </manifest>

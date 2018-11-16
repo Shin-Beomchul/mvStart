@@ -1,0 +1,7 @@
+
+
+
+MVVM이 효과
+재사용성 : 개발된 다수의 VM으로 View를 개발 할 수 있다.(VM이 View가 하는일이 무엇인지 모름 == 조작 할 수 없음 == 종속적이지 않음)
+View용의성 : VM에게 명령하고 Cmd 변경 결과를 옵져빙 한뒤 View를 갱신한다.
+            MVP : View에서 Presenter에게 명령하고, Presenter로 부터 View를 갱신. 1:1

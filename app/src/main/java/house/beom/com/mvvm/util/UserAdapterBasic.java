@@ -9,31 +9,25 @@ import java.util.Collections;
 import java.util.List;
 
 import house.beom.com.mvvm.R;
-import house.beom.com.mvvm.databinding.ItemUserBinding;
+import house.beom.com.mvvm.databinding.ItemUserBasicBinding;
 import house.beom.com.mvvm.dto.User;
-import house.beom.com.mvvm.mvvm.livedata.vm.ItemUserVM;
+import house.beom.com.mvvm.mvvm.basic.vm.ItemUserVMBasic;
 
 
 /**
  *
  */
 
-public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserAdapterViewHolder> {
+public class UserAdapterBasic extends RecyclerView.Adapter<UserAdapterBasic.UserAdapterViewHolder> {
 
     private List<User> userList;
-    private ItemUserVM itemUserVM;
 
-    public UserAdapter(ItemUserVM itemUserVM) {
-        this.itemUserVM =itemUserVM;
-        this.userList = Collections.emptyList();
-    }
+    public UserAdapterBasic() {this.userList = Collections.emptyList();}
 
     @Override
     public UserAdapterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        ItemUserBinding itemUserBinding = DataBindingUtil.inflate(
-                LayoutInflater.from(parent.getContext())
-                , R.layout.item_user ,parent, false);
+        ItemUserBasicBinding itemUserBinding = DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.item_user_basic ,parent, false);
         return new UserAdapterViewHolder(itemUserBinding);
     }
 
@@ -45,6 +39,9 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserAdapterVie
 
     @Override
     public int getItemCount() {
+        if(userList == null){
+            return 0;
+        }
         return  userList.size();
     }
 
@@ -62,19 +59,20 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserAdapterVie
 
 
     /* Holder */
-     class UserAdapterViewHolder extends RecyclerView.ViewHolder {
+    public static class UserAdapterViewHolder extends RecyclerView.ViewHolder {
 
-        ItemUserBinding mItemUserBinding;
+        ItemUserBasicBinding mItemUserBinding;
 
-        public UserAdapterViewHolder(ItemUserBinding itemUserBinding) {
+        public UserAdapterViewHolder(ItemUserBasicBinding itemUserBinding) {
             super(itemUserBinding.itemCardRoot);
             this.mItemUserBinding = itemUserBinding;
         }
 
         void bindUser(User user){
             if(mItemUserBinding.getItemUserViewModel() == null){
-                itemUserVM.setUser(user);
-                mItemUserBinding.setItemUserViewModel(itemUserVM);
+                ItemUserVMBasic userVM = new ItemUserVMBasic();
+                userVM.setUser(user);
+                mItemUserBinding.setItemUserViewModel(userVM);
             }else {
                 mItemUserBinding.getItemUserViewModel().setUser(user);
             }

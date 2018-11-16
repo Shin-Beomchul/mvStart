@@ -1,4 +1,4 @@
-package house.beom.com.mvvm.util;
+package house.beom.com.mvvm.util.network;
 
 public interface Constant {
 
