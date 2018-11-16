@@ -1,9 +1,6 @@
-package house.beom.com.mvvm.mvvm.livedata.vm;
+package house.beom.com.mvvm.mvvm.basic.vm;
 
-import android.app.Application;
-import android.arch.lifecycle.AndroidViewModel;
 import android.databinding.BindingAdapter;
-import android.support.annotation.NonNull;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -11,20 +8,20 @@ import com.bumptech.glide.Glide;
 
 import house.beom.com.mvvm.dto.User;
 
-public class ItemUserVM extends AndroidViewModel {
+public class ItemUserVMBasic {
 
     private User user;
 
-    public ItemUserVM(@NonNull Application application) {
-        super(application);
-    }
 
+    public ItemUserVMBasic(){
+
+    }
 
     public String getProfileThumb() {
         return user.picture.medium;
     }
 
-    //Intercepter
+
     @BindingAdapter("imageUrl") public static void setImageUrl(ImageView imageView, String url){
         Glide.with(imageView.getContext()).load(url).into(imageView);
     }
@@ -34,11 +31,9 @@ public class ItemUserVM extends AndroidViewModel {
     public String getFullName() {
         user.fullName = user.name.title + "." + user.name.first + " " + user.name.last;
         return user.fullName;
-
     }
 
     public void onItemClick(View v){
-
 
     }
 
@@ -46,4 +41,7 @@ public class ItemUserVM extends AndroidViewModel {
         this.user = user;
 
     }
+
+
+
 }

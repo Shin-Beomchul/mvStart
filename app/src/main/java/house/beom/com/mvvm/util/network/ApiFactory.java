@@ -1,10 +1,10 @@
-package house.beom.com.mvvm.network;
+package house.beom.com.mvvm.util.network;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-import static house.beom.com.mvvm.util.Constant.BASE_URL;
+import static house.beom.com.mvvm.util.network.Constant.BASE_URL;
 
 
 /**

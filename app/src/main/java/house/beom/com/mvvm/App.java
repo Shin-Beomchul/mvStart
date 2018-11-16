@@ -2,8 +2,8 @@ package house.beom.com.mvvm;
 
 import android.app.Application;
 
-import house.beom.com.mvvm.network.ApiFactory;
-import house.beom.com.mvvm.network.UsersService;
+import house.beom.com.mvvm.util.network.ApiFactory;
+import house.beom.com.mvvm.util.network.UsersService;
 
 public class App extends Application {
 
@@ -16,6 +16,10 @@ public class App extends Application {
         }
 
         return usersService;
+    }
+
+    public   Application getApp(){
+        return this;
     }
 
 }

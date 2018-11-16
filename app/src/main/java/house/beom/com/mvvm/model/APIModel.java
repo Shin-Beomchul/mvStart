@@ -1,11 +1,11 @@
-package house.beom.com.mvvm.mvvm.livedata.model;
+package house.beom.com.mvvm.model;
 
 import java.util.List;
 
 import house.beom.com.mvvm.App;
 import house.beom.com.mvvm.dto.User;
-import house.beom.com.mvvm.network.UserResponse;
-import house.beom.com.mvvm.util.Constant;
+import house.beom.com.mvvm.util.network.UserResponse;
+import house.beom.com.mvvm.util.network.Constant;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
 import io.reactivex.schedulers.Schedulers;

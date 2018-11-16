@@ -1,25 +1,32 @@
 package house.beom.com.mvvm.mvvm.livedata.vm;
 
+import android.app.Application;
+import android.arch.lifecycle.AndroidViewModel;
 import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.ViewModel;
+import android.support.annotation.NonNull;
 import android.view.View;
 
 import java.util.List;
 
 import house.beom.com.mvvm.dto.User;
-import house.beom.com.mvvm.mvvm.livedata.model.APIModel;
+import house.beom.com.mvvm.model.APIModel;
 
-public class ListVM extends ViewModel {
+public class ListVM extends AndroidViewModel {
 
-    //use LiveData
+    // use LiveData
     private MutableLiveData<Integer> progressBarState = new MutableLiveData<>();
     private MutableLiveData<List<User>>  users = new MutableLiveData<>();
 
-    //생성자
-    ListVM(){  progressBarState.postValue(View.GONE); }
+    public ListVM(@NonNull Application application) {
+        super(application);
+        {  progressBarState.postValue(View.GONE); }
+    }
+
+    // 생성자
 
 
-    /* API  */
+
+    /* API */
     public void reqUsers(View view) {
         progressBarState.postValue(View.VISIBLE);                                                   //MVP : view.onProresss(View.VISIBLE) P는 View를 알고 있다.
         APIModel.getUsers(users -> {
@@ -28,7 +35,7 @@ public class ListVM extends ViewModel {
         });
     }
 
-    //XML(auto) , observe
+    //XML(auto) , observe(Act,Fmt)
     public MutableLiveData<List<User>> getUsers() {
         return users;
     }

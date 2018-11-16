@@ -9,8 +9,10 @@ import android.widget.Toast;
 
 import house.beom.com.mvvm.R;
 import house.beom.com.mvvm.databinding.ActivityMvlistBinding;
+import house.beom.com.mvvm.mvvm.livedata.vm.ItemUserVM;
 import house.beom.com.mvvm.mvvm.livedata.vm.ListVM;
 import house.beom.com.mvvm.util.UserAdapter;
+import house.beom.com.mvvm.util.ViewModelFactory;
 
 /*
    확실히 하고 갈것.
@@ -40,11 +42,11 @@ public class ListActMV extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mvListBinding =  DataBindingUtil.setContentView(this,R.layout.activity_mvlist);
-        mvListBinding.setLifecycleOwner(this);                                                       // setLifecycleOwner() 함수를 이용해 lifecycleOwner()만 설정을 해주면
-                                                                                                     // ViewModel에서  Live Data필드 postValue를 해주는 순간 XML UI가 업데이트
-                                                                                                     // observe는 항상함. 혼동 유의. XML UI 업데이트
+        mvListBinding.setLifecycleOwner(this);                                                       // ViewModel에서  Live Data필드 postValue를 해주는 순간 XML UI가 업데이트
+                                                                                                     // observe(liveData)는 항상함. 혼동 유의. XML UI 업데이트
 
-        listViewModel = ViewModelProviders.of(this).get(ListVM.class);                        // 라이프 사이클 관리하기 위해  | 생성자가 있는 View모델을 초기화 할 경우 https://medium.com/@jungil.han/%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-viewmodel-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-2e4d136d28d2
+        ViewModelFactory factory = ViewModelFactory.getInstance(getApplication());
+        listViewModel = ViewModelProviders.of(this,factory).get(ListVM.class);                        // 라이프 사이클 관리하기 위해  | 생성자가 있는 View모델을 초기화 할 경우 https://medium.com/@jungil.han/%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-viewmodel-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-2e4d136d28d2
         mvListBinding.setListViewModel(listViewModel);
 
 
@@ -71,24 +73,24 @@ public class ListActMV extends AppCompatActivity {
 
 
 
-
-
-
-        //View가 VM을 옵져빙
+        //View가 VM을 옵져빙 When : API 호출
         listViewModel.getUsers().observe(this,users -> {
-
+            UserAdapter userAdapter;
                 if(mvListBinding.recyclerview.getAdapter() == null){
-                    UserAdapter userAdapter = new UserAdapter();
+                    ItemUserVM itemUserVM = ViewModelProviders.of(this,factory).get(ItemUserVM.class);
+                    userAdapter = new UserAdapter(itemUserVM);
                     mvListBinding.recyclerview.setAdapter(userAdapter);
                     mvListBinding.recyclerview.setLayoutManager(new LinearLayoutManager(this));
                     userAdapter.setUserList(users);
                 }else{
-                    ((UserAdapter) mvListBinding.recyclerview.getAdapter()).getUserList().addAll(users);
-                    mvListBinding.recyclerview.getAdapter().notifyDataSetChanged();
+                    userAdapter = ((UserAdapter) mvListBinding.recyclerview.getAdapter());
+                    int notiStartPos =  userAdapter.getUserList().size();
+                    userAdapter.getUserList().addAll(users);
+                    userAdapter.notifyItemRangeInserted(notiStartPos, userAdapter.getUserList().size());
                 }
 
 
-            Toast.makeText(getApplicationContext(),"[Controller] :: Users 데이터 변경감지",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(),"[Controller] :: Users 데이터 변경감지 ",Toast.LENGTH_SHORT).show();
         });
 
 

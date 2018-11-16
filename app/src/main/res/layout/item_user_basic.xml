@@ -7,11 +7,8 @@
   <data>
       <variable
           name="itemUserViewModel"
-          type="house.beom.com.mvvm.mvvm.livedata.vm.ItemUserVM"/>
+          type="house.beom.com.mvvm.mvvm.basic.vm.ItemUserVMBasic"/>
 
-      <variable
-          name="user"
-          type="house.beom.com.mvvm.dto.User"/>
 
   </data>
     <android.support.v7.widget.CardView
@@ -23,7 +20,7 @@
         android:background="?attr/selectableItemBackground"
         android:foreground="?android:attr/selectableItemBackground"
         android:clickable="true"
-        android:onClick="@{(view) -> itemUserViewModel.onItemClick(view)}"
+        android:onClick="@{itemUserViewModel::onItemClick}"
         android:padding="16dp">
 
 
