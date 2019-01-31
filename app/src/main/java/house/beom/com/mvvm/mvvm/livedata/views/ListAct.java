@@ -34,7 +34,7 @@ import house.beom.com.mvvm.util.ViewModelFactory;
 
 
  */
-public class ListActMV extends AppCompatActivity {
+public class ListAct extends AppCompatActivity {
     ActivityMvlistBinding mvListBinding;
     ListVM listViewModel;
 
@@ -46,28 +46,8 @@ public class ListActMV extends AppCompatActivity {
                                                                                                      // observe(liveData)는 항상함. 혼동 유의. XML UI 업데이트
 
         ViewModelFactory factory = ViewModelFactory.getInstance(getApplication());
-        listViewModel = ViewModelProviders.of(this,factory).get(ListVM.class);                        // 라이프 사이클 관리하기 위해  | 생성자가 있는 View모델을 초기화 할 경우 https://medium.com/@jungil.han/%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-viewmodel-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-2e4d136d28d2
+        listViewModel = ViewModelProviders.of(this,factory).get(ListVM.class);              // 라이프 사이클 관리하기 위해  | 생성자가 있는 View모델을 초기화 할 경우 https://medium.com/@jungil.han/%EC%95%84%ED%82%A4%ED%85%8D%EC%B2%98-%EC%BB%B4%ED%8F%AC%EB%84%8C%ED%8A%B8-viewmodel-%EC%9D%B4%ED%95%B4%ED%95%98%EA%B8%B0-2e4d136d28d2
         mvListBinding.setListViewModel(listViewModel);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

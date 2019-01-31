@@ -7,7 +7,7 @@
   <data>
       <variable
           name="itemUserViewModel"
-          type="house.beom.com.mvvm.mvvm.basic.vm.ItemUserVMBasic"/>
+          type="house.beom.com.mvvm.mvvm.basic.vm.ItemUserVM"/>
 
 
   </data>

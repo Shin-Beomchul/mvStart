@@ -19,9 +19,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".mvvm.livedata.views.ListActMV" />
+        <activity android:name=".mvvm.livedata.views.ListAct" />
         <activity android:name=".mvvm.livedata.views.DetailActMV" />
-        <activity android:name=".mvvm.basic.views.ListActBasic"></activity>
+        <activity android:name=".mvvm.basic.views.ListAct"></activity>
     </application>
 
 </manifest>

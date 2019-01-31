@@ -10,17 +10,17 @@ import java.util.Observer;
 
 import house.beom.com.mvvm.R;
 import house.beom.com.mvvm.databinding.ActivityListActBasicBinding;
-import house.beom.com.mvvm.mvvm.basic.vm.ListVMBasic;
+import house.beom.com.mvvm.mvvm.basic.vm.ListVM;
 import house.beom.com.mvvm.util.UserAdapterBasic;
 
-public class ListActBasic extends AppCompatActivity implements Observer {
+public class ListAct extends AppCompatActivity implements Observer {
     ActivityListActBasicBinding binding;
-    ListVMBasic listVM;
+    ListVM listVM;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding =  DataBindingUtil.setContentView(this,R.layout.activity_list_act_basic);
-        listVM = new ListVMBasic();
+        listVM = new ListVM();
         listVM.addObserver(this);
         binding.setListVmBasic(listVM);
     }
@@ -31,7 +31,7 @@ public class ListActBasic extends AppCompatActivity implements Observer {
     public void update(Observable observable, Object o) {
 
         int action = (int)o;
-        if(action == ListVMBasic.RAND_USER_SUCCESS) {
+        if(action == ListVM.RAND_USER_SUCCESS) {
             UserAdapterBasic userAdapter = (UserAdapterBasic) binding.recyclerview.getAdapter();
 
             if (userAdapter == null) {

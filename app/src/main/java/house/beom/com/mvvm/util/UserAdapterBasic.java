@@ -11,7 +11,7 @@ import java.util.List;
 import house.beom.com.mvvm.R;
 import house.beom.com.mvvm.databinding.ItemUserBasicBinding;
 import house.beom.com.mvvm.dto.User;
-import house.beom.com.mvvm.mvvm.basic.vm.ItemUserVMBasic;
+import house.beom.com.mvvm.mvvm.basic.vm.ItemUserVM;
 
 
 /**
@@ -34,7 +34,27 @@ public class UserAdapterBasic extends RecyclerView.Adapter<UserAdapterBasic.User
     @Override
     public void onBindViewHolder(UserAdapterViewHolder holder, int position) {
         holder.bindUser(userList.get(position));
+    }
 
+    /* Holder */
+    public static class UserAdapterViewHolder extends RecyclerView.ViewHolder {
+
+        ItemUserBasicBinding mItemUserBinding;
+
+        public UserAdapterViewHolder(ItemUserBasicBinding itemUserBinding) {
+            super(itemUserBinding.itemCardRoot);
+            this.mItemUserBinding = itemUserBinding;
+        }
+
+        void bindUser(User user){
+            if(mItemUserBinding.getItemUserViewModel() == null){
+                ItemUserVM userVM = new ItemUserVM();
+                userVM.setUser(user);
+                mItemUserBinding.setItemUserViewModel(userVM);
+            }else {
+                mItemUserBinding.getItemUserViewModel().setUser(user);
+            }
+        }
     }
 
     @Override
@@ -52,30 +72,5 @@ public class UserAdapterBasic extends RecyclerView.Adapter<UserAdapterBasic.User
 
     public List<User> getUserList() {
         return userList;
-    }
-
-
-
-
-
-    /* Holder */
-    public static class UserAdapterViewHolder extends RecyclerView.ViewHolder {
-
-        ItemUserBasicBinding mItemUserBinding;
-
-        public UserAdapterViewHolder(ItemUserBasicBinding itemUserBinding) {
-            super(itemUserBinding.itemCardRoot);
-            this.mItemUserBinding = itemUserBinding;
-        }
-
-        void bindUser(User user){
-            if(mItemUserBinding.getItemUserViewModel() == null){
-                ItemUserVMBasic userVM = new ItemUserVMBasic();
-                userVM.setUser(user);
-                mItemUserBinding.setItemUserViewModel(userVM);
-            }else {
-                mItemUserBinding.getItemUserViewModel().setUser(user);
-            }
-        }
     }
 }

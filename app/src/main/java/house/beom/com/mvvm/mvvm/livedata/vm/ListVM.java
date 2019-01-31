@@ -24,8 +24,6 @@ public class ListVM extends AndroidViewModel {
 
     // 생성자
 
-
-
     /* API */
     public void reqUsers(View view) {
         progressBarState.postValue(View.VISIBLE);                                                   //MVP : view.onProresss(View.VISIBLE) P는 View를 알고 있다.

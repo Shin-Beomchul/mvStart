@@ -9,9 +9,9 @@
           name="itemUserViewModel"
           type="house.beom.com.mvvm.mvvm.livedata.vm.ItemUserVM"/>
 
-      <variable
-          name="user"
-          type="house.beom.com.mvvm.dto.User"/>
+      <!--<variable-->
+          <!--name="user"-->
+          <!--type="house.beom.com.mvvm.dto.User"/>-->
 
   </data>
     <android.support.v7.widget.CardView

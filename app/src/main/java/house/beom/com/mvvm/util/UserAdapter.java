@@ -32,8 +32,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserAdapterVie
     public UserAdapterViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
         ItemUserBinding itemUserBinding = DataBindingUtil.inflate(
-                LayoutInflater.from(parent.getContext())
-                , R.layout.item_user ,parent, false);
+                LayoutInflater.from(parent.getContext()), R.layout.item_user ,parent, false);
         return new UserAdapterViewHolder(itemUserBinding);
     }
 

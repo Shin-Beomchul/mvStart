@@ -7,7 +7,7 @@
 
         <variable
             name="listVmBasic"
-            type="house.beom.com.mvvm.mvvm.basic.vm.ListVMBasic"/>
+            type="house.beom.com.mvvm.mvvm.basic.vm.ListVM"/>
 
 
     </data>

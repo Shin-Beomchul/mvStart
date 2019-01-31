@@ -10,7 +10,7 @@ import java.util.Observable;
 import house.beom.com.mvvm.dto.User;
 import house.beom.com.mvvm.model.APIModel;
 //https://academy.realm.io/kr/posts/eric-maxwell-mvc-mvp-and-mvvm-on-android/
-public class ListVMBasic extends Observable {
+public class ListVM extends Observable {
 
     public static int RAND_USER_SUCCESS = 1;
 
@@ -18,7 +18,7 @@ public class ListVMBasic extends Observable {
     private ObservableField<List<User>>  users = new ObservableField<>();
 
     //생성자
-    public ListVMBasic(){  progressBarState.set(View.GONE); }
+    public ListVM(){  progressBarState.set(View.GONE); }
 
 
     /* API */
@@ -29,7 +29,6 @@ public class ListVMBasic extends Observable {
             this.users.set(users);
 
             setChanged();
-
             notifyObservers(RAND_USER_SUCCESS);
         });
     }

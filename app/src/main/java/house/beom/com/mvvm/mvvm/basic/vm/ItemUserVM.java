@@ -8,12 +8,12 @@ import com.bumptech.glide.Glide;
 
 import house.beom.com.mvvm.dto.User;
 
-public class ItemUserVMBasic {
+public class ItemUserVM {
 
     private User user;
 
 
-    public ItemUserVMBasic(){
+    public ItemUserVM(){
 
     }
 
@@ -22,7 +22,8 @@ public class ItemUserVMBasic {
     }
 
 
-    @BindingAdapter("imageUrl") public static void setImageUrl(ImageView imageView, String url){
+    @BindingAdapter("imageUrl")
+    public static void setImageUrl(ImageView imageView, String url){
         Glide.with(imageView.getContext()).load(url).into(imageView);
     }
 
